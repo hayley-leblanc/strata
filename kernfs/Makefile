@@ -22,7 +22,7 @@ HDER := $(foreach sdir, $(SRC_DIR), $(wildcard $(sdir)/*.h))
 ########
 #  Lib directories
 ########
-NVML_DIR := $(abspath $(LIBFS_DIR)/lib/nvml/src)
+PMDK_DIR := $(abspath $(LIBFS_DIR)/lib/pmdk/src)
 DPDK_DIR := $(abspath $(LIBFS_DIR)/lib/dpdk-16.07/x86_64-native-linuxapp-gcc)
 CUCKOO_FILTER_DIR := $(abspath $(LIBFS_DIR)/lib/cuckoofilter)
 CUCKOO_DIR := $(abspath $(LIBFS_DIR)/lib/libcuckoo)
@@ -30,9 +30,9 @@ GLIB_DIR := $(abspath $(LIBFS_DIR)/lib/glib)
 JEMALLOC_DIR := $(abspath $(LIBFS_DIR)/lib/jemalloc-4.5.0)
 STORAGE_ENGINE := $(wildcard $(LIBFS_DIR)/build/storage/*.o)
 
-INCLUDES  := $(addprefix -I, . $(NVML_DIR)/include $(CUCKOO_DIR) $(CUCKOO_FILTER_DIR)/src $(GLIB_DIR)/ $(GLIB_DIR)/glib)
+INCLUDES  := $(addprefix -I, . $(PMDK_DIR)/include $(CUCKOO_DIR) $(CUCKOO_FILTER_DIR)/src $(GLIB_DIR)/ $(GLIB_DIR)/glib)
 
-LD_FLAGS = -lpthread -lm -L$(NVML_DIR)/nondebug/ -lpmem -lrt
+LD_FLAGS = -lpthread -lm -L$(PMDK_DIR)/nondebug/ -lpmem -lrt
 
 #MLFS_FLAGS = -DUSE_SLAB -DMLFS_INFO -DKERNFS 
 MLFS_FLAGS = -DMLFS_INFO -DKERNFS 
