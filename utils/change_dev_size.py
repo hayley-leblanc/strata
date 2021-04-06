@@ -6,7 +6,7 @@ import os
 import re
 import sys
 
-GB = 1024 ** 3
+# GB = 1024 ** 3
 
 def main():
   if len(sys.argv) < 5:
@@ -27,10 +27,14 @@ def main():
     print("Error: Cannot find {}".format(storage_h))
     return -1
 
-  dax0 = int(sys.argv[1]) * GB
-  ssd =  int(sys.argv[2]) * GB
-  hdd =  int(sys.argv[3]) * GB
-  dax1 = int(sys.argv[4]) * GB
+  # dax0 = int(sys.argv[1]) * GB
+  # ssd =  int(sys.argv[2]) * GB
+  # hdd =  int(sys.argv[3]) * GB
+  # dax1 = int(sys.argv[4]) * GB
+  dax0 = int(sys.argv[1])
+  ssd = int(sys.argv[2])
+  hdd = int(sys.argv[3])
+  dax1 = int(sys.argv[4])
 
   f_contents = str()
   with open(storage_h, "r+b") as f:

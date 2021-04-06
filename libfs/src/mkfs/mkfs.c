@@ -151,7 +151,12 @@ int main(int argc, char *argv[])
 	}
 
 	// Bypass dev-dax mmap problem: use actual device size - 550 MB.
-	file_size_bytes = dev_size[dev_id] - (550 << 20);
+	// what the hell does that mean?? it looks like we can't try to 
+	// mmap and access the whole device (otherwise we get a bus 
+	// error trying to write to the mmap'ed region). 
+	// removing 4MB seems to be the minimal amount to skip to get it working
+	// file_size_bytes = dev_size[dev_id] - (550 << 20);
+	file_size_bytes = dev_size[dev_id] - (4 << 20);
 	file_size_blks = file_size_bytes >> g_block_size_shift;
 	log_size_blks = file_size_blks - (1UL * (1 << 10));
 	nbitmap = file_size_blks / (g_block_size_bytes * 8) + 1;

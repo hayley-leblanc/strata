@@ -25,8 +25,8 @@ extern "C" {
 #define BANDWIDTH_MONITOR_NS 10000
 #define SEC_TO_NS(x) (x * 1000000000UL)
 
-#define ENABLE_PERF_MODEL
-#define ENABLE_BANDWIDTH_MODEL
+// #define ENABLE_PERF_MODEL
+// #define ENABLE_BANDWIDTH_MODEL
 
 // performance parameters
 /* SCM read extra latency than DRAM */
@@ -188,9 +188,9 @@ uint8_t *dax_init(uint8_t dev, char *dev_path)
 	// up to the max dev_size (last 550 MB is not accessible).
 	dev_size[dev] -= (550 << 20);
 
-	printf("dev-dax engine is initialized: dev_path %s size %lu MB\n", 
+	printf("dev-dax engine is initialized: dev_path %s size %lu bytes\n", 
 			dev_path, dev_size[dev] >> 20);
-
+	printf("dax addr: %d\n", *(uint8_t*)dax_addr[dev]);
 	return dax_addr[dev];
 }
 
