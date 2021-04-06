@@ -48,7 +48,9 @@ This step requires reboot your machine after installing the new kernel.
 ##### 3. Build dependent libraries (SPDK, NVML, JEMALLOC)
 ~~~
 cd libfs/lib
-git clone https://github.com/pmem/nvml
+git clone https://github.com/pmem/pmdk
+cd pmdk
+git checkout a41b017b67
 git clone https://github.com/pmem/syscall_intercept.git
 make
 

@@ -1,7 +1,7 @@
 .PHONY: download all clean
 
 all:
-	make -C nvml -j8
+	make -C pmdk -j8
 	(cd syscall_intercept; \
 	 mkdir build; \
 	 mkdir install; \
@@ -16,10 +16,10 @@ all:
 #but it breaks SPDK compilation
 redownload:
 	########
-	# 	NVML
+	# 	PMDK
 	########
-	@rm -rf nvml
-	git clone https://github.com/pmem/nvml
+	@rm -rf pmdk
+	git clone https://github.com/pmem/pmdk
 	########
 	#       syscall_intercept
 	########
@@ -27,4 +27,4 @@ redownload:
 	git clone https://github.com/pmem/syscall_intercept.git
 
 clean:
-	make clean -C nvml
+	make clean -C pmdk

@@ -35,13 +35,13 @@ OBJ       := $(patsubst src/%.c,build/%.o,$(SRC))
 ########
 #  Lib directories
 ########
-NVML_DIR := $(abspath $(CURDIR)/lib/nvml/src)
+PMDK_DIR := $(abspath $(CURDIR)/lib/pmdk/src)
 JEMALLOC_DIR := $(abspath $(CURDIR)/lib/jemalloc-4.5.0)
 SYSCALL_INTERCEPT_DIR := $(abspath $(CURDIR)/lib/syscall_intercept/install/)
 
-INCLUDES  := $(addprefix -I,src/ $(NVML_DIR)/include $(SYSCALL_INTERCEPT_DIR)/include)
+INCLUDES  := $(addprefix -I,src/ $(PMDK_DIR)/include $(SYSCALL_INTERCEPT_DIR)/include)
 
-LD_FLAGS = -lpthread -lm -L$(NVML_DIR)/nondebug/ -Wl,-rpath=$(abspath $(NVML_DIR)/nondebug) -lpmem -lrt -L$(abspath $(SYSCALL_INTERCEPT_DIR)/lib) -Wl,-rpath=$(abspath $(SYSCALL_INTERCEPT_DIR)/lib) -lsyscall_intercept #-Wl,-fuse-ld=gold
+LD_FLAGS = -lpthread -lm -L$(PMDK_DIR)/nondebug/ -Wl,-rpath=$(abspath $(PMDK_DIR)/nondebug) -lpmem -lrt -L$(abspath $(SYSCALL_INTERCEPT_DIR)/lib) -Wl,-rpath=$(abspath $(SYSCALL_INTERCEPT_DIR)/lib) -lsyscall_intercept #-Wl,-fuse-ld=gold
 
 #MLFS_FLAGS = -DUSE_SLAB -DLIBFS -DMLFS_INFO
 #MLFS_FLAGS = -DLIBFS
@@ -96,7 +96,7 @@ libmlfs: $(OBJ)
 
 mkfs: $(OBJ) libmlfs
 	$(CC) -o build/mkfs.o -c src/mkfs/mkfs.c $(INCLUDES) $(MLFS_FLAGS)
-	$(CC) -g -o bin/mkfs.mlfs  build/libmlfs.a $(INCLUDES) $(LD_FLAGS) -DLIBFS -Wl,-rpath=$(abspath $(NVML_DIR)/nondebug) 
+	$(CC) -g -o bin/mkfs.mlfs  build/libmlfs.a $(INCLUDES) $(LD_FLAGS) -DLIBFS -Wl,-rpath=$(abspath $(PMDK_DIR)/nondebug) 
 
 
 ########
