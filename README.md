@@ -51,6 +51,7 @@ cd libfs/lib
 git clone https://github.com/pmem/pmdk
 cd pmdk
 git checkout a41b017b67
+cd ..
 git clone https://github.com/pmem/syscall_intercept.git
 make
 
