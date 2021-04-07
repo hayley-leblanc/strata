@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 from __future__ import print_function
 
@@ -37,7 +37,7 @@ def main():
   dax1 = int(sys.argv[4])
 
   f_contents = str()
-  with open(storage_h, "r+b") as f:
+  with open(storage_h, "r+") as f:
     f_contents = f.read()
 
     pattern = r'(static uint64\_t dev\_size[^{}]*) {[^{}]*}(.*)'

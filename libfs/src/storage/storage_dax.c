@@ -185,11 +185,11 @@ uint8_t *dax_init(uint8_t dev, char *dev_path)
 	}
 
 	// FIXME: for some reason, when mmap the Linux dev-dax, dax_addr is not accessible
-	// up to the max dev_size (last 550 MB is not accessible).
-	dev_size[dev] -= (550 << 20);
+	// up to the max dev_size (last 4 MB is not accessible).
+	dev_size[dev] -= (4 << 20);
 
 	printf("dev-dax engine is initialized: dev_path %s size %lu bytes\n", 
-			dev_path, dev_size[dev] >> 20);
+			dev_path, dev_size[dev]);
 	printf("dax addr: %d\n", *(uint8_t*)dax_addr[dev]);
 	return dax_addr[dev];
 }
