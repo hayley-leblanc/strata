@@ -1,1 +1,1 @@
-./../../../kernfs/extents_bh.c
+../../../kernfs/extents_bh.c

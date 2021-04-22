@@ -1,1 +1,1 @@
-./../libfs/src/filesystem/shared.h
+../libfs/src/filesystem/shared.h

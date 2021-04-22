@@ -78,7 +78,7 @@ checkdirs: $(BUILD_DIR)
 	@mkdir -p bin
 
 clean:
-	@rm -rf $(BUILD_DIR)
+	@rm -rf build/ bin/
 
 ########
 #  Create dirs recursively

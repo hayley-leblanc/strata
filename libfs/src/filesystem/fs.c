@@ -134,6 +134,8 @@ void shutdown_fs(void)
 		panic("cannot close shared memory\n");
 	*/
 
+	initialized = 0;
+
 	return ;
 }
 
